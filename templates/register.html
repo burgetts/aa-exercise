@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock %}
+
+{% block content %}
+<form id="register-form" action="/register" method="post" class="ml-2">
+    {{ form.hidden_tag() }}
+    {% for field in form
+            if field.widget.input_type != 'hidden' %}
+    
+            <p>
+               <b>{{ field.label }} </b> 
+                {{ field (class_="form-control col-md-6 ml-2")}}
+           
+                {% for error in field.errors %}
+                 <span> {{ error }} </span> 
+                {% endfor %}
+              </p>
+    {% endfor %}
+    <button class="btn btn-primary"> Register </button>
+
+</form>
+{% endblock %}

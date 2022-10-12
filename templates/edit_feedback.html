@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Feedback {% endblock %}
+
+{% block content %}
+<form id="edit-feedback-form" action="/feedback/{{feedback.id}}/update" method="post" class="ml-2">
+    {{ form.hidden_tag() }}
+
+    
+    <p>
+        <b>{{ form.title.label }} </b> 
+            {{ form.title() }}
+    </p>
+    <p>
+        <b>{{ form.content.label }} </b> 
+            {{ form.content() }}
+    </p>
+           
+
+
+    <button class="btn btn-primary"> Edit Feedback </button>
+</form>
+{% endblock %}

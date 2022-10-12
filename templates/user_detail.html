@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} {{user.username}} {% endblock %}
+
+{% block content %}
+<ul>
+    <li> <b> First Name: </b> {{user.first_name}}</li>
+    <li> <b> Last Name: </b> {{user.last_name}}</li>
+    <li> <b> Email: </b> {{user.email}}</li>
+</ul>
+
+<h2> Feedback </h2>
+{% for post in feedback %}
+<div class="ml-2">
+    <p><b> {{post.title}} </b></p>
+    <p><i> By: {{user.username}} </i></p>
+    <p> {{post.content}} </p>
+    <small>
+         <a href="/feedback/{{post.id}}/update"class="text-danger"> Edit </a> |
+        <a href="/feedback/{{post.id}}/delete" class="text-danger"> Delete </a>
+    </small>
+    <br>
+</div>
+{% endfor %}
+
+<form action="/users/{{user.username}}/feedback/add">
+    <button class = "btn btn-primary ml-2"> Add Feedback! </button>
+</form>
+<br>
+<form action="/users/{{user.username}}/delete" method="post">
+    <button class = "btn btn-danger ml-2"> Delete User </button>
+</form>
+{% endblock %}
